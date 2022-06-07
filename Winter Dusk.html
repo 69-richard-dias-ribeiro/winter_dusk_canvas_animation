@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+
+    function init() {
+      requestAnimationFrame(draw);
+    }
+
+   var descesol = 0;
+   var andanuvem = 0;
+   //var aumentadegrade = 0;
+
+    var a = 200;
+    var b = 200;
+    var c = 75;
+    var d = 145;
+    var e = 50;
+    var f = 50;
+    
+    var contJanela = 0;
+
+
+    function draw() {
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext('2d');
+      ctx.clearRect(0,0, canvas.width, canvas.height);
+      ctx.save();
+     
+      //aumentadegrade = aumentadegrade + 1; 
+       contJanela ++;
+    a = a + 0.5;
+    b = b - 0.25;
+    c = c - 0.25;
+    d = d + 0.5;
+
+if(contJanela <1250){
+
+     //fundo em degradê
+        var lingrad = ctx.createLinearGradient(200, 0, 200, 400);
+        //lingrad.addColorStop(0, 'rgb(200, 200, 75)');
+        lingrad.addColorStop(0, 'rgb('+a+','+b+','+c+')');
+        lingrad.addColorStop(1, 'rgb('+d+','+e+', '+f+')');
+        ctx.fillStyle = lingrad;
+    ctx.fillRect(0, 0, 400, 400);
+}else{
+      //fundo em degradê
+      var lingrad = ctx.createLinearGradient(200, 0, 200, 400);
+        //lingrad.addColorStop(0, 'rgb(200, 200, 75)');
+        lingrad.addColorStop(0, 'rgb('+0+','+0+','+0+')');
+        lingrad.addColorStop(1, 'rgb('+0+','+0+', '+0+')');
+        ctx.fillStyle = lingrad;
+    ctx.fillRect(0, 0, 400, 400);
+}
+    //sol
+    
+    descesol = descesol + 0.4;
+    andanuvem = andanuvem + 0.4;
+    
+
+        ctx.beginPath();
+        ctx.fillStyle = 'yellow';
+        ctx.strokeStyle = 'yellow';
+        ctx.arc(200, 30+descesol, 40, 0, Math.PI*2, true);
+        ctx.fill();
+        ctx.stroke();
+
+        
+    //nuvens
+        ctx.beginPath();
+        ctx.fillStyle = 'lightblue';
+        ctx.strokeStyle = 'lightblue';
+        ctx.arc(25+andanuvem, 125, 20, 0, Math.PI*2, true);
+        ctx.fill();
+        ctx.stroke();
+        ctx.arc(48+andanuvem, 125, 20, 0, Math.PI*2, true);
+        ctx.fill();
+        ctx.stroke();
+        ctx.arc(70+andanuvem, 125, 20, 0, Math.PI*2, true);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'lightblue';
+        ctx.strokeStyle = 'lightblue';
+        ctx.arc(225-40+andanuvem, 175, 20, 0, Math.PI*2, true);
+        ctx.fill();
+        ctx.stroke();
+        ctx.arc(248-40+andanuvem, 175, 20, 0, Math.PI*2, true);
+        ctx.fill();
+        ctx.stroke();
+        ctx.arc(270-40+andanuvem, 175, 20, 0, Math.PI*2, true);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.fillStyle = 'lightblue';
+        ctx.strokeStyle = 'lightblue';
+        ctx.arc(325-40+andanuvem, 135, 20, 0, Math.PI*2, true);
+        ctx.fill();
+        ctx.stroke();
+        ctx.arc(348-40+andanuvem, 135, 20, 0, Math.PI*2, true);
+        ctx.fill();
+        ctx.stroke();
+        ctx.arc(370-40+andanuvem, 135, 20, 0, Math.PI*2, true);
+        ctx.fill();
+        ctx.stroke();
+
+    //prédios (fiz quatro, n sei se tem problema)
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(10, 225, 60, 400);
+    ctx.fillRect(80, 255, 60, 400);
+    ctx.fillRect(220, 230, 60, 400);
+    ctx.fillRect(330, 245, 60, 400);
+
+
+    if(contJanela < 250){
+    //janela
+    ctx.fillStyle = 'black';
+    ctx.fillRect(20, 235, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(20, 285, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(20, 325, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'black';
+    ctx.fillRect(90, 265, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(90, 295, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(90, 335, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'black';
+    ctx.fillRect(230, 245, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(230, 295, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(230, 335, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'black';
+    ctx.fillRect(340, 259, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(340, 325, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(340, 355, 20, 20);
+
+    } else if(contJanela < 500){
+        //janela
+    ctx.fillStyle = 'white';
+    ctx.fillRect(20, 235, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(20, 285, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(20, 325, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'black';
+    ctx.fillRect(90, 265, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(90, 295, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(90, 335, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'white';
+    ctx.fillRect(230, 245, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(230, 295, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(230, 335, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'black';
+    ctx.fillRect(340, 259, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 325, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 355, 20, 20);
+
+    } else if(contJanela < 1000){
+        //janela
+    ctx.fillStyle = 'white';
+    ctx.fillRect(20, 235, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(20, 285, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(20, 325, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'black';
+    ctx.fillRect(90, 265, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(90, 295, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(90, 335, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'white';
+    ctx.fillRect(230, 245, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(230, 295, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(230, 335, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 259, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 325, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 355, 20, 20);
+    } else if(contJanela < 1500){
+//janela
+ctx.fillStyle = 'white';
+    ctx.fillRect(20, 235, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(20, 285, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(20, 325, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'white';
+    ctx.fillRect(90, 265, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(90, 295, 20, 20);
+
+    ctx.fillStyle = 'black';
+    ctx.fillRect(90, 335, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'white';
+    ctx.fillRect(230, 245, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(230, 295, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(230, 335, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 259, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 325, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 355, 20, 20);
+    } else if(contJanela < 2000){
+        //janela
+    ctx.fillStyle = 'white';
+    ctx.fillRect(20, 235, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(20, 285, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(20, 325, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'white';
+    ctx.fillRect(90, 265, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(90, 295, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(90, 335, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'white';
+    ctx.fillRect(230, 245, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(230, 295, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(230, 335, 20, 20);
+//-----------------------------------
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 259, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 325, 20, 20);
+
+    ctx.fillStyle = 'white';
+    ctx.fillRect(340, 355, 20, 20);
+    }
+
+    ctx.restore();
+
+      requestAnimationFrame(draw);
+
+    }
+  </script>
+
+
+ </head>
+ <body onload="init();">
+   <canvas id="canvas" width="400" height="400"></canvas>
+ </body>
+</html>

@@ -21,27 +21,26 @@
   </style>
   
   <script type="application/javascript">
-
     function init() {
       requestAnimationFrame(draw);
     }
 
-   var sunYposAddition = 0;
-   var cloudsXposAddition = 0;
+    var windowLifetimeCounter = 0;
 
-   /*
-        the following six variables are used to generate the
-        values for the linear gradient used to fill in the background
-   */
-   var backgroundGradientColorStop1Red = 200;
-   var backgroundGradientColorStop1Green = 200;
-   var backgroundGradientColorStop1Blue = 75;
-   var backgroundGradientColorStop2Red = 145;
-   var backgroundGradientColorStop2Green = 50;
-   var backgroundGradientColorStop2Blue = 50;
+    var sunYposAddition = 0;
+    var cloudsXposAddition = 0;
+
+    /*
+         the following six variables are used to generate the
+         values for the linear gradient used to fill in the background
+    */
+    var backgroundGradientColorStop1Red = 200;
+    var backgroundGradientColorStop1Green = 200;
+    var backgroundGradientColorStop1Blue = 75;
+    var backgroundGradientColorStop2Red = 145;
+    var backgroundGradientColorStop2Green = 50;
+    var backgroundGradientColorStop2Blue = 50;
    
-   var windowLifetimeCounter = 0;
-
     function draw() {
 
         //drawing functions
@@ -49,7 +48,6 @@
             sunYposAddition = sunYposAddition + 0.4;
             cloudsXposAddition = cloudsXposAddition + 0.4;
             
-
             ctx.beginPath();
             ctx.fillStyle = sunColor;
             ctx.strokeStyle = sunColor;
@@ -106,19 +104,29 @@
             ctx.fillRect(330, 245, 60, 400);
         };
         
-        var drawWindows = function(windowsColor){
-                ctx.fillStyle = windowsColor[0]; ctx.fillRect(20, 235, 20, 20);
-                ctx.fillStyle = windowsColor[1]; ctx.fillRect(20, 285, 20, 20);
-                ctx.fillStyle = windowsColor[2]; ctx.fillRect(20, 325, 20, 20);
-                ctx.fillStyle = windowsColor[3]; ctx.fillRect(90, 265, 20, 20);
-                ctx.fillStyle = windowsColor[4]; ctx.fillRect(90, 295, 20, 20);
-                ctx.fillStyle = windowsColor[5]; ctx.fillRect(90, 335, 20, 20);
-                ctx.fillStyle = windowsColor[6]; ctx.fillRect(230, 245, 20, 20);
-                ctx.fillStyle = windowsColor[7]; ctx.fillRect(230, 295, 20, 20);
-                ctx.fillStyle = windowsColor[8]; ctx.fillRect(230, 335, 20, 20);
-                ctx.fillStyle = windowsColor[9]; ctx.fillRect(340, 259, 20, 20);
-                ctx.fillStyle = windowsColor[10]; ctx.fillRect(340, 325, 20, 20);
-                ctx.fillStyle = windowsColor[11]; ctx.fillRect(340, 355, 20, 20);
+        var drawTheWindows = function(windowsColor){
+
+            for (let i = 0; i < windowsColor.length; i++) {
+                ctx.fillStyle = windowsColor[i];
+                
+                if (i < 3) {
+                    if (i == 0) ctx.fillRect(20, 235, 20, 20);
+                    if (i == 1) ctx.fillRect(20, 285, 20, 20);
+                    if (i == 2) ctx.fillRect(20, 325, 20, 20);
+                } else if (i < 6) {
+                    if (i == 3) ctx.fillRect(90, 265, 20, 20);
+                    if (i == 4) ctx.fillRect(90, 295, 20, 20);
+                    if (i == 5) ctx.fillRect(90, 335, 20, 20);
+                } else if (i < 9) {
+                    if (i == 6) ctx.fillRect(230, 245, 20, 20);
+                    if (i == 7) ctx.fillRect(230, 295, 20, 20);
+                    if (i == 8) ctx.fillRect(230, 335, 20, 20);
+                } else {
+                    if (i == 9) ctx.fillRect(340, 259, 20, 20);
+                    if (i == 10) ctx.fillRect(340, 325, 20, 20);
+                    if (i == 11) ctx.fillRect(340, 355, 20, 20);
+                }
+            }
         };
 
         var canvas = document.getElementById('canvas');
@@ -161,15 +169,15 @@
         increase the number of white windows (lights turned on)
     */
     if(windowLifetimeCounter < 250){
-        drawWindows(Array(12).fill('black'));
+        drawTheWindows(Array(12).fill('black'));
     } else if (windowLifetimeCounter < 500){
-        drawWindows(['white', 'black', 'black', 'black', 'white', 'black', 'white', 'black', 'black', 'black', 'white', 'black']);
+        drawTheWindows(['white', 'black', 'black', 'black', 'white', 'black', 'white', 'black', 'black', 'black', 'white', 'black']);
     } else if (windowLifetimeCounter < 1000){
-        drawWindows(['white', 'white', 'black', 'black', 'white', 'white', 'white', 'white', 'black', 'white', 'white', 'black']);
+        drawTheWindows(['white', 'white', 'black', 'black', 'white', 'white', 'white', 'white', 'black', 'white', 'white', 'black']);
     } else if (windowLifetimeCounter < 1500){
-        drawWindows(['white', 'white', 'white', 'black', 'white', 'white', 'white', 'white', 'white', 'white', 'white', 'white']);
+        drawTheWindows(['white', 'white', 'white', 'black', 'white', 'white', 'white', 'white', 'white', 'white', 'white', 'white']);
     } else {
-        drawWindows(Array(12).fill('white'));
+        drawTheWindows(Array(12).fill('white'));
     }
 
     ctx.restore();

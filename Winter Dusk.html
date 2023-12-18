@@ -40,7 +40,8 @@
     var backgroundGradientColorStop2Red = 145;
     var backgroundGradientColorStop2Green = 50;
     var backgroundGradientColorStop2Blue = 50;
-   
+
+    //to be called once per frame
     function draw() {
 
         //drawing functions
@@ -135,6 +136,8 @@
         ctx.save();
      
         windowLifetimeCounter ++;
+
+        //set up the variables for the backround gradient colors, for when it's still not nighttime
         backgroundGradientColorStop1Red = backgroundGradientColorStop1Red + 0.5;
         backgroundGradientColorStop1Green = backgroundGradientColorStop1Green - 0.25;
         backgroundGradientColorStop1Blue = backgroundGradientColorStop1Blue - 0.25;
